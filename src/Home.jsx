@@ -10,7 +10,7 @@ import Navbar from './Components/Navbar'
 export default function Home() {
   return (
   <>
-  <Navbar></Navbar>
+
   <Hero></Hero>
   <Menu></Menu>
   <Gallery></Gallery>

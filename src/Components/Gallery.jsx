@@ -1,65 +1,99 @@
 import { motion } from "framer-motion";
 
+const fallbackImg =
+  "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1200";
+
 const images = [
-  "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=1200",
-  "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1200",
-  "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1200",
-  "https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=1200",
-  "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1200",
-  "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?q=80&w=600",
+  {
+    src: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=1200",
+    title: "Restaurant Ambience",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1200",
+    title: "Signature Dishes",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1200",
+    title: "Fresh Starters",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=1200",
+    title: "Chef Specials",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1200",
+    title: "Main Course",
+  },
+  {
+    src: "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?q=80&w=1200",
+    title: "Dining Experience",
+  },
 ];
 
 export default function Gallery() {
   return (
     <section className="min-h-screen w-full bg-black text-white py-20 px-6">
 
-      {/* Header */}
+      {/* HEADER */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-14"
+        className="text-center mb-16"
       >
         <h1 className="text-5xl md:text-6xl font-bold">
-          Our <span className="text-yellow-400">Gallery</span>
+          Our <span className="text-orange-400">Gallery</span>
         </h1>
         <p className="text-gray-400 mt-4">
-          A glimpse of our flavors, ambience & experience.
+          A visual taste of our food, ambience & experience
         </p>
       </motion.div>
 
-      {/* Grid */}
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
+      {/* GRID */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-        {images.map((img, i) => (
+        {images.map((item, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.05 }}
             viewport={{ once: true }}
+            whileHover={{ y: -8, scale: 1.02 }}
             transition={{ duration: 0.4 }}
-            className="relative group overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl"
+            className="relative group overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-xl shadow-xl"
           >
 
-            {/* Image */}
-            <img
-              src={img}
-              alt="food gallery"
-              className="w-full h-64 object-cover group-hover:scale-110 transition duration-500"
-            />
+            {/* IMAGE */}
+            <div className="h-72 overflow-hidden relative">
+              <img
+                src={item.src}
+                alt={item.title}
+                onError={(e) => (e.target.src = fallbackImg)}
+                className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+              />
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition" />
-
-            {/* Hover Text */}
-            <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition">
-              <p className="text-sm text-yellow-400 font-semibold">
-                Signature Dish
-              </p>
-              <p className="text-xs text-gray-300">
-                Crafted with love & freshness
-              </p>
+              {/* DARK OVERLAY */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             </div>
+
+            {/* TEXT OVERLAY */}
+            <div className="absolute bottom-0 left-0 w-full p-4 z-10">
+
+              <div className="translate-y-4 group-hover:translate-y-0 transition duration-500">
+
+                <h3 className="text-white font-semibold text-lg group-hover:text-orange-400 transition">
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-300 text-xs mt-1 opacity-80">
+                  Authentic Indo-Chinese experience
+                </p>
+
+              </div>
+
+            </div>
+
+            {/* GLOW EFFECT */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-orange-500/10 blur-2xl"></div>
 
           </motion.div>
         ))}
