@@ -16,7 +16,7 @@ const fadeUp = {
 
 export default function Contact() {
   return (
-    <section className="w-full bg-black text-white py-16 px-4 overflow-x-hidden">
+    <section className="w-full bg-gradient-to-b from-white to-amber-50 text-gray-800 py-16 px-4 overflow-x-hidden">
 
       {/* BRAND HEADER */}
       <motion.div
@@ -30,21 +30,21 @@ export default function Contact() {
           custom={0}
           className="text-3xl md:text-5xl font-bold"
         >
-          RAJAN FOOD CORNER
+          The <span className="text-emerald-700">Pahadi Adda</span>
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
           custom={1}
-          className="text-orange-400 mt-2 text-sm"
+          className="text-emerald-600 mt-2 text-sm font-medium"
         >
-          Authentic Indo-Chinese Kitchen 🍜
+          Authentic Himachali Kitchen 🍃
         </motion.p>
 
         <motion.p
           variants={fadeUp}
           custom={2}
-          className="text-gray-400 mt-3 text-sm max-w-md mx-auto"
+          className="text-gray-500 mt-3 text-sm max-w-md mx-auto"
         >
           Fresh noodles • momos • soups • rice bowls
         </motion.p>
@@ -61,18 +61,18 @@ export default function Contact() {
           variants={fadeUp}
           custom={3}
           whileTap={{ scale: 0.96 }}
-          href="tel:+919888895696"
-          className="bg-white/10 hover:bg-white/20 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition"
+          href="tel:+9805889303"
+          className="bg-white border border-emerald-200 hover:bg-emerald-50 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition"
         >
-          <FaPhoneAlt /> Call Now
+          <FaPhoneAlt className="text-emerald-700" /> Call Now
         </motion.a>
 
         <motion.a
           variants={fadeUp}
           custom={4}
           whileTap={{ scale: 0.96 }}
-          href="https://wa.me/919888895696"
-          className="bg-green-500 hover:bg-green-600 text-black px-5 py-3 rounded-xl flex items-center justify-center gap-2 font-semibold transition"
+          href="https://wa.me/9805889303"
+          className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl flex items-center justify-center gap-2 font-semibold transition"
         >
           <FaWhatsapp /> WhatsApp Order
         </motion.a>
@@ -84,9 +84,9 @@ export default function Contact() {
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="mt-10 max-w-md mx-auto bg-white/5 border border-white/10 rounded-2xl p-6"
+        className="mt-10 max-w-md mx-auto bg-white border border-emerald-100 rounded-2xl p-6 shadow-sm"
       >
-        <h2 className="text-xl font-semibold text-center mb-4">
+        <h2 className="text-xl font-semibold text-center mb-4 text-gray-800">
           Reserve Table
         </h2>
 
@@ -96,25 +96,25 @@ export default function Contact() {
             whileFocus={{ scale: 1.02 }}
             type="text"
             placeholder="Your Name"
-            className="w-full p-3 rounded-xl bg-black/40 border border-white/10 focus:border-orange-400 outline-none"
+            className="w-full p-3 rounded-xl bg-white border border-emerald-100 focus:border-emerald-500 outline-none"
           />
 
           <motion.input
             whileFocus={{ scale: 1.02 }}
             type="number"
             placeholder="Guests"
-            className="w-full p-3 rounded-xl bg-black/40 border border-white/10 focus:border-orange-400 outline-none"
+            className="w-full p-3 rounded-xl bg-white border border-emerald-100 focus:border-emerald-500 outline-none"
           />
 
           <motion.input
             whileFocus={{ scale: 1.02 }}
             type="date"
-            className="w-full p-3 rounded-xl bg-black/40 border border-white/10 focus:border-orange-400 outline-none"
+            className="w-full p-3 rounded-xl bg-white border border-emerald-100 focus:border-emerald-500 outline-none"
           />
 
           <motion.button
             whileTap={{ scale: 0.97 }}
-            className="w-full bg-orange-500 hover:bg-orange-600 text-black font-semibold py-3 rounded-xl transition"
+            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition"
           >
             Confirm Booking
           </motion.button>
@@ -126,7 +126,7 @@ export default function Contact() {
       <div className="mt-10 max-w-md mx-auto space-y-3">
 
         {[
-          { icon: <FaPhoneAlt />, text: "+91 98888 95696" },
+          { icon: <FaPhoneAlt />, text: "+91 98058 89303" },
           { icon: <FaMapMarkerAlt />, text: "Main Market, Punjab, India" },
           { icon: <FaClock />, text: "10:00 AM - 11:00 PM" },
         ].map((item, i) => (
@@ -136,10 +136,10 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="bg-white/5 border border-white/10 rounded-xl p-4 flex gap-3 items-center"
+            className="bg-white border border-emerald-100 rounded-xl p-4 flex gap-3 items-center shadow-sm"
           >
-            <span className="text-orange-400">{item.icon}</span>
-            <p className="text-sm">{item.text}</p>
+            <span className="text-emerald-700">{item.icon}</span>
+            <p className="text-sm text-gray-600">{item.text}</p>
           </motion.div>
         ))}
 
@@ -150,7 +150,7 @@ export default function Contact() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mt-10 max-w-md mx-auto rounded-2xl overflow-hidden border border-white/10"
+        className="mt-10 max-w-md mx-auto rounded-2xl overflow-hidden border border-emerald-100 shadow-sm"
       >
         <iframe
           src="https://www.google.com/maps?q=Main%20Market%20Punjab%20India&output=embed"

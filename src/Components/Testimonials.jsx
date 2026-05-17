@@ -1,95 +1,163 @@
 import { motion } from "framer-motion";
+import { FaPhoneAlt, FaMapMarkerAlt, FaClock, FaWhatsapp } from "react-icons/fa";
 
-const reviews = [
-  {
-    name: "Rahul Sharma",
-    role: "Food Blogger",
-    text: "Yahan ka khana bahut hi zabardast hai 😍 taste, presentation aur service sab top class hai!",
-    img: "https://i.pravatar.cc/100?img=12",
-  },
-  {
-    name: "Anjali Verma",
-    role: "Customer",
-    text: "Paneer butter masala bilkul ghar jaisa laga ❤️ fresh aur spicy perfect balance tha.",
-    img: "https://i.pravatar.cc/100?img=32",
-  },
-  {
-    name: "Karan Mehta",
-    role: "Chef & Reviewer",
-    text: "Modern aur desi Chinese ka perfect combo hai. Highly recommended 👍",
-    img: "https://i.pravatar.cc/100?img=45",
-  },
-];
+const fadeUp = {
+  hidden: { opacity: 0, y: 18 },
+  show: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.12,
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  }),
+};
 
-export default function Testimonials() {
+export default function Contact() {
   return (
-    <section className="w-full bg-black text-white py-24 px-6">
+    <section className="w-full bg-gradient-to-b from-white to-amber-50 text-gray-800 py-16 px-4 overflow-x-hidden">
 
-      {/* HEADER */}
+      {/* BRAND HEADER */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        whileInView="show"
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="text-center"
       >
-        <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold">
-          What Our <span className="text-orange-400">Customers Say</span>
-        </h2>
-        <p className="text-gray-400 mt-4">
-          Real feedback from our food lovers ❤️
-        </p>
+        <motion.h1
+          variants={fadeUp}
+          custom={0}
+          className="text-3xl md:text-5xl font-bold"
+        >
+          The <span className="text-emerald-700">Pahadi Adda</span>
+        </motion.h1>
+
+        <motion.p
+          variants={fadeUp}
+          custom={1}
+          className="text-emerald-600 mt-2 text-sm font-medium"
+        >
+          Authentic Himachali Kitchen 🍃
+        </motion.p>
+
+        <motion.p
+          variants={fadeUp}
+          custom={2}
+          className="text-gray-500 mt-3 text-sm max-w-md mx-auto"
+        >
+          Fresh noodles • momos • soups • rice bowls
+        </motion.p>
       </motion.div>
 
-      {/* CARDS */}
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      {/* ACTION BUTTONS */}
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="mt-8 flex flex-col gap-3 max-w-md mx-auto"
+      >
+        <motion.a
+          variants={fadeUp}
+          custom={3}
+          whileTap={{ scale: 0.96 }}
+          href="tel:+9805889303"
+          className="bg-white border border-emerald-200 hover:bg-emerald-50 px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition"
+        >
+          <FaPhoneAlt className="text-emerald-700" /> Call Now
+        </motion.a>
 
-        {reviews.map((item, i) => (
+        <motion.a
+          variants={fadeUp}
+          custom={4}
+          whileTap={{ scale: 0.96 }}
+          href="https://wa.me/9805889303"
+          className="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl flex items-center justify-center gap-2 font-semibold transition"
+        >
+          <FaWhatsapp /> WhatsApp Order
+        </motion.a>
+      </motion.div>
+
+      {/* BOOKING CARD */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="mt-10 max-w-md mx-auto bg-white border border-emerald-100 rounded-2xl p-6 shadow-sm"
+      >
+        <h2 className="text-xl font-semibold text-center mb-4 text-gray-800">
+          Reserve Table
+        </h2>
+
+        <form className="space-y-3">
+
+          <motion.input
+            whileFocus={{ scale: 1.02 }}
+            type="text"
+            placeholder="Your Name"
+            className="w-full p-3 rounded-xl bg-white border border-emerald-100 focus:border-emerald-500 outline-none"
+          />
+
+          <motion.input
+            whileFocus={{ scale: 1.02 }}
+            type="number"
+            placeholder="Guests"
+            className="w-full p-3 rounded-xl bg-white border border-emerald-100 focus:border-emerald-500 outline-none"
+          />
+
+          <motion.input
+            whileFocus={{ scale: 1.02 }}
+            type="date"
+            className="w-full p-3 rounded-xl bg-white border border-emerald-100 focus:border-emerald-500 outline-none"
+          />
+
+          <motion.button
+            whileTap={{ scale: 0.97 }}
+            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition"
+          >
+            Confirm Booking
+          </motion.button>
+
+        </form>
+      </motion.div>
+
+      {/* INFO CARDS */}
+      <div className="mt-10 max-w-md mx-auto space-y-3">
+
+        {[
+          { icon: <FaPhoneAlt />, text: "+91 98058 89303" },
+          { icon: <FaMapMarkerAlt />, text: "Main Market, Punjab, India" },
+          { icon: <FaClock />, text: "10:00 AM - 11:00 PM" },
+        ].map((item, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -10, scale: 1.03 }}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="relative group bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 shadow-xl overflow-hidden"
+            className="bg-white border border-emerald-100 rounded-xl p-4 flex gap-3 items-center shadow-sm"
           >
-
-            {/* Glow effect */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-orange-500/10 blur-2xl"></div>
-
-            {/* Stars */}
-            <div className="text-orange-400 text-sm mb-3">
-              ⭐⭐⭐⭐⭐
-            </div>
-
-            {/* Review Text */}
-            <p className="text-gray-300 text-sm leading-relaxed relative z-10">
-              “{item.text}”
-            </p>
-
-            {/* User */}
-            <div className="flex items-center gap-4 mt-6 relative z-10">
-
-              <img
-                src={item.img}
-                alt={item.name}
-                className="w-12 h-12 rounded-full object-cover border border-orange-400"
-              />
-
-              <div>
-                <h4 className="font-semibold text-white">{item.name}</h4>
-                <p className="text-xs text-gray-400">{item.role}</p>
-              </div>
-
-            </div>
-
-            {/* Bottom accent line */}
-            <div className="mt-5 h-[1px] w-full bg-gradient-to-r from-transparent via-orange-500/40 to-transparent"></div>
-
+            <span className="text-emerald-700">{item.icon}</span>
+            <p className="text-sm text-gray-600">{item.text}</p>
           </motion.div>
         ))}
 
       </div>
+
+      {/* MAP */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mt-10 max-w-md mx-auto rounded-2xl overflow-hidden border border-emerald-100 shadow-sm"
+      >
+        <iframe
+          src="https://www.google.com/maps?q=Main%20Market%20Punjab%20India&output=embed"
+          className="w-full h-60 block"
+        />
+      </motion.div>
+
     </section>
   );
 }
